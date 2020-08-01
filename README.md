@@ -1,0 +1,1 @@
+# serverless-angular-scala
