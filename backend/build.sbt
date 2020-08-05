@@ -7,7 +7,7 @@ ThisBuild / organizationName := "Sebastian Georgi"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "serverless-angular-scala-be",
+    name := "backend",
     libraryDependencies += scalaTest % Test
   )
 

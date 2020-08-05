@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/backend/.idea/modules/serverless-angular-scala-be.iml" filepath="$PROJECT_DIR$/backend/.idea/modules/serverless-angular-scala-be.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/.idea/modules/backend.iml" filepath="$PROJECT_DIR$/backend/.idea/modules/backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend/.idea/modules/backend-build.iml" filepath="$PROJECT_DIR$/backend/.idea/modules/backend-build.iml" />
       <module fileurl="file://$PROJECT_DIR$/frontend/frontend.iml" filepath="$PROJECT_DIR$/frontend/frontend.iml" />
     </modules>

@@ -16,6 +16,11 @@
       <set />
     </option>
     <option name="testKind" value="All in package" />
+    <option name="classBuf">
+      <list>
+        <option value="io.georgi.HelloSpec" />
+      </list>
+    </option>
     <option name="testPackagePath" value="io.georgi" />
     <option name="workingDirectory" value="$PROJECT_DIR$" />
     <method v="2">
