@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Angular Application (frontend)" type="JavascriptDebugType" uri="http://localhost:4200">
+    <mapping url="webpack:///." local-file="$PROJECT_DIR$/frontend" />
+    <method v="2" />
+  </configuration>
+</component>
