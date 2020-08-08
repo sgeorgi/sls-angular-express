@@ -14,3 +14,11 @@ authenticated. You will have to reauthenticate after a day or so, issuing
 
 All serverless or AWS CLI commands can be prefixed with `AWS_PROFILE=georgi-sls` if
 not configured directly.
+
+Python SSO-to-credentials
+- `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py`
+- `python get-pip.py`
+- `pip install yawsso`
+
+Run `yawsso -p georgi-sls` after each aws sso login to get real credentials 
+for the serverless-framework
