@@ -16,7 +16,7 @@ app.engine('html', ngExpressEngine({
 app.set('view engine', 'html');
 app.set('views', distFolder);
 // Example Express Rest API endpoints
-// app.get('/api/**', (req, res) => { });
+app.get('/api/**', (req, res) => { });
 // Serve static files from /browser
 app.get('*.*', express.static(distFolder, {
   maxAge: '1y'
