@@ -11,7 +11,9 @@
     "dev:ssr": "ng run frontend:serve-ssr",
     "serve:ssr": "node dist/frontend/server/main.js",
     "build:ssr": "ng build --prod && ng run frontend:server:production",
-    "prerender": "ng run frontend:prerender"
+    "prerender": "ng run frontend:prerender",
+    "serve:sls": "serverless offline start",
+    "build:sls": "ng build --prod && ng run frontend:serverless:production"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +27,7 @@
     "@angular/platform-server": "~10.0.6",
     "@angular/router": "~10.0.6",
     "@nguniversal/express-engine": "^10.0.1",
+    "aws-serverless-express": "^3.3.8",
     "express": "^4.15.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
