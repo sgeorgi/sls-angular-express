@@ -4,6 +4,7 @@ plugins:
   - serverless-offline
 provider:
   name: aws
+  region: eu-central-1
   runtime: nodejs12.x
   memorySize: 192
   timeout: 10
