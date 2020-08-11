@@ -14,7 +14,7 @@
     "prerender": "ng run frontend:prerender",
     "serve:sls": "serverless offline start",
     "build:sls:dev": "ng build --prod --baseHref=/dev/ && ng run frontend:serverless:production",
-    "build:sls": "ng build --prod && ng run frontend:serverless:production"
+    "build:sls": "ng build --prod --baseHref=/app/--deploy-url=/app && ng run frontend:serverless:production"
   },
   "private": true,
   "dependencies": {

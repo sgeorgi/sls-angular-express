@@ -1,4 +1,4 @@
-package io.sgeorgi.sls
+package io.georgi.sls
 
 import scala.beans.BeanProperty
 

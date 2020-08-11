@@ -41,7 +41,7 @@ custom:
     domainName: ${self:custom.domains.${self:custom.stage}}
     stage: "${self:custom.stage}"
     certificateName: ${self:custom.customDomain.domainName}
-    basePath: ''
+    basePath: 'app'
     createRoute53Record: true
     region: eu-central-1
     certificateArn: ${self:custom.certificates.${self:custom.stage}}
@@ -59,17 +59,17 @@ functions:
       - http: GET {proxy+}
       - http: GET /
 
-resources:
-  outputs:
-    ApiGatewayRestApiId:
-      value:
-        ref: ApiGatewayRestApi
-      export:
-        name: ${self:custom.stage}-ExtApiGatewayRestApiId
-    ApiGatewayRestApiRootResourceId:
-      value:
-        Fn::GetAtt:
-          - ApiGatewayRestApi
-          - RootResourceId
-      export:
-        name: ${self:custom.stage}-ExtApiGatewayRestApiRootResourceId
+#resources:
+#  outputs:
+#    ApiGatewayRestApiId:
+#      value:
+#        ref: ApiGatewayRestApi
+#      export:
+#        name: ${self:custom.stage}-ExtApiGatewayRestApiId
+#    ApiGatewayRestApiRootResourceId:
+#      value:
+#        Fn::GetAtt:
+#          - ApiGatewayRestApi
+#          - RootResourceId
+#      export:
+#        name: ${self:custom.stage}-ExtApiGatewayRestApiRootResourceId
