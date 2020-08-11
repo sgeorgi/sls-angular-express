@@ -1,0 +1,24 @@
+service: backend
+
+provider:
+  name: aws
+  profile: georgi-sls
+  region: eu-central-1
+  runtime: java
+  apiGateway:
+    restApiId:
+      'Fn::ImportValue': ${self:custom.stage}-ExtApiGatewayRestApiId
+    restApiRootResourceId:
+      'Fn::ImportValue': ${self:custom.stage}-ExtApiGatewayRestApiRootResourceId
+
+package:
+  artifact: target/scala-2.13/backend.jar
+
+functions:
+  hello:
+    handler: Handler
+    events:
+      - http: GET /backend
+
+custom:
+  stage: ${opt:stage, self:provider.stage}

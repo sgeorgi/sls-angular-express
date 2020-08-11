@@ -44,7 +44,7 @@ custom:
     basePath: ''
     createRoute53Record: true
     region: eu-central-1
-    // certificateArn: ${self:custom.certificates.${self:custom.stage}}
+    certificateArn: ${self:custom.certificates.${self:custom.stage}}
   customCertificate:
     certificateName: ${self:custom.customDomain.domainName}
     hostedZoneNames: 'sls.georgi.io.'
@@ -58,3 +58,18 @@ functions:
     events:
       - http: GET {proxy+}
       - http: GET /
+
+resources:
+  outputs:
+    ApiGatewayRestApiId:
+      value:
+        ref: ApiGatewayRestApi
+      export:
+        name: ${self:custom.stage}-ExtApiGatewayRestApiId
+    ApiGatewayRestApiRootResourceId:
+      value:
+        Fn::GetAtt:
+          - ApiGatewayRestApi
+          - RootResourceId
+      export:
+        name: ${self:custom.stage}-ExtApiGatewayRestApiRootResourceId

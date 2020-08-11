@@ -1,14 +1,32 @@
-import Dependencies._
+import sbtassembly.Log4j2MergeStrategy
+import sbtrelease.Version
 
-ThisBuild / scalaVersion := "2.13.2"
-ThisBuild / version := "0.1.0-SNAPSHOT"
-ThisBuild / organization := "io.georgi"
-ThisBuild / organizationName := "Sebastian Georgi"
+name := "backend"
 
-lazy val root = (project in file("."))
-  .settings(
-    name := "backend",
-    libraryDependencies += scalaTest % Test
-  )
+resolvers += Resolver.sonatypeRepo("public")
+scalaVersion := "2.13.1"
+releaseNextVersion := { ver =>
+  Version(ver).map(_.bumpMinor.string).getOrElse("Error")
+}
+assemblyJarName in assembly := "backend.jar"
 
-// See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
+libraryDependencies ++= Seq(
+  "com.amazonaws" % "aws-lambda-java-events" % "2.2.7",
+  "com.amazonaws" % "aws-lambda-java-core" % "1.2.0",
+  "com.amazonaws" % "aws-lambda-java-log4j2" % "1.1.0"
+)
+
+scalacOptions ++= Seq(
+  "-unchecked",
+  "-deprecation",
+  "-feature",
+  "-Xfatal-warnings"
+)
+
+assemblyMergeStrategy in assembly := {
+  case PathList(ps@_*) if ps.last == "Log4j2Plugins.dat" =>
+    Log4j2MergeStrategy.plugincache
+  case x =>
+    val oldStrategy = (assemblyMergeStrategy in assembly).value
+    oldStrategy(x)
+}
