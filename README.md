@@ -22,3 +22,7 @@ Python SSO-to-credentials
 
 Run `yawsso -p georgi-sls` after each aws sso login to get real credentials 
 for the serverless-framework
+
+## Serverless deploy
+
+`sls deploy -s {dev|staging|prod} --aws-profile georgi-sls`
