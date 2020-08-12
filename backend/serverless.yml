@@ -3,7 +3,7 @@ plugins:
   - serverless-domain-manager
   - serverless-certificate-creator
   - serverless-offline
-  - serverless-apigw-binary
+#  - serverless-apigw-binary
 provider:
   name: aws
   profile: georgi-sls
@@ -23,16 +23,16 @@ custom:
   stage: ${opt:stage, self:provider.stage}
   domains:
     prod: api.sls.georgi.io
-    staging: api-staging.sls.georgi.io
+    staging: staging.api.sls.georgi.io
   #    dev: dev-sg-api.sls.georgi.io
-  apigwBinary:
-    types:
-      - "*/*"
+#  apigwBinary:
+#    types:
+#      - "*/*"
   customDomain:
     domainName: ${self:custom.domains.${self:custom.stage}}
     stage: "${self:custom.stage}"
     certificateName: ${self:custom.customDomain.domainName}
-    basePath: 'api'
+    basePath: ''
     createRoute53Record: true
     region: eu-central-1
   customCertificate:
