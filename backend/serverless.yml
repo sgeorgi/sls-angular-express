@@ -1,16 +1,14 @@
 service: api
 plugins:
   - serverless-domain-manager
+  - serverless-certificate-creator
+  - serverless-offline
+  - serverless-apigw-binary
 provider:
   name: aws
   profile: georgi-sls
   region: eu-central-1
   runtime: java8
-#  apiGateway:
-#    restApiId:
-#      'Fn::ImportValue': ${self:custom.stage}-ExtApiGatewayRestApiId
-#    restApiRootResourceId:
-#      'Fn::ImportValue': ${self:custom.stage}-ExtApiGatewayRestApiRootResourceId
 
 package:
   artifact: target/scala-2.13/backend.jar
@@ -26,7 +24,7 @@ custom:
   domains:
     prod: api.sls.georgi.io
     staging: api-staging.sls.georgi.io
-    dev: dev-sg-api.sls.georgi.io
+  #    dev: dev-sg-api.sls.georgi.io
   apigwBinary:
     types:
       - "*/*"

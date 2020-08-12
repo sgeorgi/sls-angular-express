@@ -29,11 +29,11 @@ custom:
   domains:
     prod: sls.georgi.io
     staging: staging.sls.georgi.io
-    dev: dev-sg.sls.georgi.io
-  certificates:
-    prod: arn:aws:acm:eu-central-1:654721976277:certificate/a28cc2a8-4ee1-417c-b3dc-3e5fa42ee99f
-    staging: arn:aws:acm:eu-central-1:654721976277:certificate/b355f92a-b801-437c-99cd-5c23e48251da
-    dev: arn:aws:acm:eu-central-1:654721976277:certificate/8c32704a-b2b2-43c5-82d5-2dc51c93ea8f
+  #    dev: dev-sg.sls.georgi.io
+  #  certificates:
+  #    prod: arn:aws:acm:eu-central-1:654721976277:certificate/a28cc2a8-4ee1-417c-b3dc-3e5fa42ee99f
+  #    staging: arn:aws:acm:eu-central-1:654721976277:certificate/b355f92a-b801-437c-99cd-5c23e48251da
+  #    dev: arn:aws:acm:eu-central-1:654721976277:certificate/8c32704a-b2b2-43c5-82d5-2dc51c93ea8f
   apigwBinary:
     types:
       - "*/*"
@@ -41,10 +41,10 @@ custom:
     domainName: ${self:custom.domains.${self:custom.stage}}
     stage: "${self:custom.stage}"
     certificateName: ${self:custom.customDomain.domainName}
-    basePath: 'app'
+    basePath: ''
     createRoute53Record: true
     region: eu-central-1
-    certificateArn: ${self:custom.certificates.${self:custom.stage}}
+  #    certificateArn: ${self:custom.certificates.${self:custom.stage}}
   customCertificate:
     certificateName: ${self:custom.customDomain.domainName}
     hostedZoneNames: 'sls.georgi.io.'
