@@ -1,0 +1,38 @@
+service: api
+plugins:
+  - serverless-domain-manager
+  - serverless-certificate-creator
+  - serverless-offline
+provider:
+  name: aws
+  profile: georgi-sls
+  region: eu-central-1
+  runtime: java8
+
+package:
+  artifact: target/scala-2.13/backend.jar
+
+functions:
+  test:
+    handler: io.georgi.sls.Handler
+    events:
+      - http: GET /test
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  domains:
+    prod: api.sls.georgi.io
+    staging: staging.api.sls.georgi.io
+  customDomain:
+    domainName: ${self:custom.domains.${self:custom.stage}}
+    stage: "${self:custom.stage}"
+    certificateName: ${self:custom.customDomain.domainName}
+    basePath: 'test'
+    createRoute53Record: true
+    region: eu-central-1
+  customCertificate:
+    certificateName: ${self:custom.customDomain.domainName}
+    hostedZoneNames: 'sls.georgi.io.'
+    enabled: true
+    region: us-east-1
+    rewriteRecords: false
