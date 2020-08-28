@@ -27,8 +27,8 @@ package:
 custom:
   stage: ${opt:stage, self:provider.stage}
   domains:
-    prod: sls.georgi.io
-    staging: staging.sls.georgi.io
+    prod: api.sls.georgi.io
+    staging: staging.api.sls.georgi.io
   apigwBinary:
     types:
       - "*/*"
