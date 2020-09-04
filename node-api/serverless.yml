@@ -1,4 +1,4 @@
-service: frontend
+service: node-api
 plugins:
   - serverless-apigw-binary
   - serverless-offline
@@ -12,17 +12,6 @@ provider:
   memorySize: 192
   timeout: 10
 package:
-  exclude:
-    - ./**
-  include:
-    - "node_modules/aws-serverless-express/**"
-    - "node_modules/binary-case/**"
-    - "node_modules/type-is/**"
-    - "node_modules/media-typer/**"
-    - "node_modules/mime-types/**"
-    - "node_modules/mime-db/**"
-    - "dist/**"
-    - "lambda.js"
 
 custom:
   stage: ${opt:stage, self:provider.stage}
@@ -48,8 +37,8 @@ custom:
     rewriteRecords: false
 
 functions:
-  api:
-    handler: lambda.handler
+  app:
+    handler: index.handler
     events:
-      - http: GET {proxy+}
-      - http: GET /
+      - http: ANY /
+      - http: 'ANY {proxy+}'
